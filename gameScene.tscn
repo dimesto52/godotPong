@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://padMove.cs" type="Script" id=1]
 [ext_resource path="res://padSprite.png" type="Texture" id=2]
+[ext_resource path="res://ballMove.cs" type="Script" id=3]
+[ext_resource path="res://ball.png" type="Texture" id=4]
 
 [node name="game" type="Node2D"]
 
@@ -31,3 +33,12 @@ texture = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 editor_draw_limits = true
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+texture = ExtResource( 4 )
