@@ -5,7 +5,7 @@ public class ballMove : Node2D
 {
 
     [Export]
-    private Vector2 direction;
+    public Vector2 direction;
     [Export]
     private float speed = 20.0f;
 
