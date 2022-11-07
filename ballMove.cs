@@ -20,7 +20,7 @@ public class ballMove : Node2D
 
         RandomNumberGenerator rnd = new RandomNumberGenerator();
 
-        direction = new Vector2(rnd.RandfRange(-1.0f,1.0f),rnd.RandfRange(-1.0f,1.0f)).Normalized();
+        direction = new Vector2(rnd.RandfRange(-1.0f,1.0f),0).Normalized();
 
     }
 
