@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://padMove.cs" type="Script" id=1]
 [ext_resource path="res://padSprite.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://ball.png" type="Texture" id=4]
 [ext_resource path="res://borderReflect.cs" type="Script" id=5]
 [ext_resource path="res://padReflect.cs" type="Script" id=6]
+[ext_resource path="res://marScore.cs" type="Script" id=7]
+[ext_resource path="res://showScore.cs" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 15 )
@@ -15,6 +17,9 @@ radius = 5.0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 510, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20, 280 )
 
 [node name="game" type="Node2D"]
 
@@ -99,7 +104,49 @@ __meta__ = {
 position = Vector2( 2.5, 0.5 )
 shape = SubResource( 1 )
 
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2( -510, 0 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+side = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource( 4 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 124.0
+margin_top = -217.0
+margin_right = 153.0
+margin_bottom = -186.0
+tab_size = 24
+text = "00"
+script = ExtResource( 8 )
+side = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = -155.0
+margin_top = -220.0
+margin_right = -126.0
+margin_bottom = -189.0
+tab_size = 24
+text = "00"
+script = ExtResource( 8 )
+
+[node name="Area2D4" type="Area2D" parent="."]
+position = Vector2( 510, 0 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+shape = SubResource( 4 )
+
 [connection signal="area_entered" from="padLeft/Area2D" to="padLeft/Area2D" method="_on_Area2D_entered"]
 [connection signal="area_entered" from="padRight/Area2D2" to="padRight/Area2D2" method="_on_Area2D_entered"]
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="Area2D2" method="_on_area_entered"]
+[connection signal="area_entered" from="Area2D3" to="Area2D3" method="_area_entered"]
+[connection signal="area_entered" from="Area2D4" to="Area2D4" method="_area_entered"]

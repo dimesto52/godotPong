@@ -16,11 +16,7 @@ public class ballMove : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Position = Vector2.Zero;
-
-        RandomNumberGenerator rnd = new RandomNumberGenerator();
-
-        direction = new Vector2(rnd.RandfRange(-1.0f,1.0f),0).Normalized();
+        reset();
 
     }
 
@@ -29,4 +25,15 @@ public class ballMove : Node2D
   {
       Position += direction * delta * speed;
   }
+
+public void reset()
+{
+
+        Position = Vector2.Zero;
+
+        RandomNumberGenerator rnd = new RandomNumberGenerator();
+
+        direction = new Vector2(rnd.RandfRange(-1.0f,1.0f),rnd.RandfRange(-1.0f,1.0f)).Normalized();
+}
+
 }
