@@ -6,17 +6,22 @@ public class borderAdapt : CollisionShape2D
 {
     [Export]
     borderSide side = 0;
+    Camera2D cam;
+    Vector2 prevZoom = Vector2.Zero;
 
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
 
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+
+    void refreshPos()
     {
         Vector2 sizeScreen = GetViewportRect().Size;
-        Camera2D cam = get_CurrentCamera2D();
+        cam = get_CurrentCamera2D();
         Vector2 factor = cam.Zoom;
+
+        prevZoom = cam.Zoom;
 
         switch(this.side)
         {
@@ -41,10 +46,18 @@ public class borderAdapt : CollisionShape2D
             ((RectangleShape2D)Shape).Extents = new Vector2(20, sizeScreen.y/2.0f*factor.y);
             break;
         }
-/*
-            if(GetParent() is Area2D)
-        GD.Print(((Area2D)GetParent()).Position);
-        GD.Print(((RectangleShape2D)Shape).Extents);*/
+    }
+
+
+    public override void _Ready()
+    {
+        refreshPos();
+    }
+
+    public override void _Process(float delta)
+    {
+        if(cam.Zoom != prevZoom)
+            refreshPos();
     }
 
     Camera2D get_CurrentCamera2D()
