@@ -23,26 +23,29 @@ public class borderAdapt : CollisionShape2D
 
         prevZoom = cam.Zoom;
 
+        
+
         switch(this.side)
         {
             case borderSide.top:
             if(GetParent() is Area2D)
-                ((Area2D)GetParent()).Position = new Vector2(0, -sizeScreen.y/2.0f*factor.y-20.0f); 
+                ((Area2D)GetParent()).Position = Vector2.Up * sizeScreen.y/2.0f*factor.y + Vector2.Up * 20; 
             ((RectangleShape2D)Shape).Extents = new Vector2(sizeScreen.x /2.0f*factor.x, 20);
             break;
             case borderSide.bot:
             if(GetParent() is Area2D)
-                ((Area2D)GetParent()).Position = new Vector2(0, sizeScreen.y/2.0f*factor.y+20.0f); 
+                ((Area2D)GetParent()).Position = Vector2.Down * sizeScreen.y/2.0f*factor.y + Vector2.Down * 20; 
             ((RectangleShape2D)Shape).Extents = new Vector2(sizeScreen.x /2.0f*factor.x, 20);
             break;
             case borderSide.left:
             if(GetParent() is Area2D)
-                ((Area2D)GetParent()).Position = new Vector2(-sizeScreen.x/2.0f*factor.x-20.0f, 0); 
+                ((Area2D)GetParent()).Position = Vector2.Left * sizeScreen.x/2.0f*factor.x + Vector2.Left * 20 ; 
             ((RectangleShape2D)Shape).Extents = new Vector2(20, sizeScreen.y/2.0f*factor.y);
+            //GD.Print(factor.x);
             break;
             case borderSide.right:
             if(GetParent() is Area2D)
-                ((Area2D)GetParent()).Position = new Vector2(sizeScreen.x/2.0f*factor.x+20.0f, 0); 
+                ((Area2D)GetParent()).Position = Vector2.Right * sizeScreen.x/2.0f*factor.x+ Vector2.Right * 20; 
             ((RectangleShape2D)Shape).Extents = new Vector2(20, sizeScreen.y/2.0f*factor.y);
             break;
         }
@@ -56,8 +59,10 @@ public class borderAdapt : CollisionShape2D
 
     public override void _Process(float delta)
     {
-        if(cam.Zoom != prevZoom)
+        
+        //if(cam.Zoom != prevZoom)
             refreshPos();
+            
     }
 
     Camera2D get_CurrentCamera2D()

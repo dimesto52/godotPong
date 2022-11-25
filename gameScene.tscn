@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://padMove.cs" type="Script" id=1]
 [ext_resource path="res://ballMove.cs" type="Script" id=3]
@@ -8,6 +8,7 @@
 [ext_resource path="res://marScore.cs" type="Script" id=7]
 [ext_resource path="res://showScore.cs" type="Script" id=8]
 [ext_resource path="res://borderAdapt.cs" type="Script" id=9]
+[ext_resource path="res://camAdapt.cs" type="Script" id=10]
 
 [sub_resource type="StreamTexture" id=5]
 load_path = "res://.import/padSprite.png-cd2685c625b41d453509086905366f80.stex"
@@ -65,8 +66,8 @@ shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.5, 0.5 )
 editor_draw_limits = true
+script = ExtResource( 10 )
 
 [node name="balle" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -136,19 +137,22 @@ side = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_bottom = 1.0
-margin_left = 21.0
-margin_top = -173.0
-margin_right = 53.0
-margin_bottom = -141.0
+margin_left = 40.0
+margin_top = -170.0
+margin_right = 72.0
+margin_bottom = -138.0
 tab_size = 24
-text = "00"
+text = "[center]00[/center]"
 script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
 side = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-margin_left = -46.0
+margin_left = -50.0
 margin_top = -170.0
-margin_right = -17.0
+margin_right = -21.0
 margin_bottom = -139.0
 tab_size = 24
 text = "00"

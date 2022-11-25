@@ -26,10 +26,17 @@ public class camAdapt : Camera2D
         
         Vector2 sizeScreen = GetViewportRect().Size;
 
+        //GD.Print(sizeScreen);
+        //GD.Print(basesizeScreen);
 
         Position = Vector2.Zero;
 
-        Zoom = new Vector2(sizeScreen.x/basesizeScreen.x, sizeScreen.y/basesizeScreen.y);
+        float X = basesizeScreen.x/sizeScreen.x;
+        float Y = basesizeScreen.y/sizeScreen.y;
+        //GD.Print(X);
+        //GD.Print(Y);
+        
+        Zoom = new Vector2(X, Y);
 
         //GD.Print(Zoom);
     }

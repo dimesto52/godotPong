@@ -56,14 +56,14 @@ public class padMove : Node2D
 			(side == sidePad.left && Input.GetActionStrength("j1Up") > 0) ||
 			(side == sidePad.right && Input.GetActionStrength("j2Up") > 0) )
 		{
-			if(Position.y < sizeScreen.y/2.0f*factor.y)
+			if(Position.y > -sizeScreen.y/2.0f*factor.y + 20)
 			Position += new Vector2(0, -delta*speed);
 		}
 		if(
 			(side == sidePad.left && Input.GetActionStrength("j1Down") > 0) ||
 			(side == sidePad.right && Input.GetActionStrength("j2Down") > 0) )
 		{
-			if(Position.y > -sizeScreen.y/2.0f*factor.y)
+			if(Position.y < sizeScreen.y/2.0f*factor.y - 20)
 			Position += new Vector2(0, delta*speed);
 		}
 	 }
