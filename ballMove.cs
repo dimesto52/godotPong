@@ -32,6 +32,7 @@ public void reset()
         Position = Vector2.Zero;
 
         RandomNumberGenerator rnd = new RandomNumberGenerator();
+        rnd.Randomize();
 
         direction = new Vector2(rnd.RandfRange(-1.0f,1.0f),rnd.RandfRange(-1.0f,1.0f)).Normalized();
 }

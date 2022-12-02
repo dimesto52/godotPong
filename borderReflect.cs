@@ -24,6 +24,8 @@ public class borderReflect : Area2D
             ballMove bm = ((ballMove)area.GetParent());
 
             bm.direction=bm.direction.Bounce(normal);
+
+            rumbleManager.b_data.Invoke(new bumpData((Vector2)(-normal)*2.0f, 25.0f, 0.5f));
         }
     }
 

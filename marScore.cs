@@ -28,6 +28,7 @@ public class marScore : Node
 
 
             bm.reset();
+            rumbleManager.r_data.Invoke(new rumbleData(5f, 0.2f));
 
         }
 

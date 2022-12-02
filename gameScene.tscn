@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://padMove.cs" type="Script" id=1]
+[ext_resource path="res://rumbleManager.cs" type="Script" id=2]
 [ext_resource path="res://ballMove.cs" type="Script" id=3]
 [ext_resource path="res://ball.png" type="Texture" id=4]
 [ext_resource path="res://borderReflect.cs" type="Script" id=5]
@@ -64,10 +65,15 @@ script = ExtResource( 6 )
 position = Vector2( 0, -1 )
 shape = SubResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="pivot"]
 current = true
 editor_draw_limits = true
 script = ExtResource( 10 )
+
+[node name="rumbleManager" type="Node" parent="pivot/Camera2D"]
+script = ExtResource( 2 )
 
 [node name="balle" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -142,7 +148,7 @@ margin_top = -170.0
 margin_right = 72.0
 margin_bottom = -138.0
 tab_size = 24
-text = "[center]00[/center]"
+text = "00"
 script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
