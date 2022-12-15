@@ -6,6 +6,9 @@ public class marScore : Node
     [Export]
     sideScore side = 0;
 
+    [Export]
+    public randomSound sound;
+
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
@@ -29,6 +32,7 @@ public class marScore : Node
 
             bm.reset();
             rumbleManager.r_data.Invoke(new rumbleData(5f, 0.2f));
+            sound?.playSound((Node)this);
 
         }
 

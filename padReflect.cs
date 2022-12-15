@@ -3,6 +3,10 @@ using System;
 
 public class padReflect : Area2D
 {
+
+    [Export]
+    public randomSound sound;
+
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
@@ -22,6 +26,7 @@ public class padReflect : Area2D
 
             bm.direction = (bm.Position - GlobalPosition).Normalized();
 
+            sound?.playSound((Node)this);
         }
     }
 

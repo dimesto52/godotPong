@@ -5,6 +5,8 @@ public class borderReflect : Area2D
 {
     [Export]
     Vector2 normal = Vector2.Up;
+    [Export]
+    public randomSound sound;
 
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -26,6 +28,7 @@ public class borderReflect : Area2D
             bm.direction=bm.direction.Bounce(normal);
 
             rumbleManager.b_data.Invoke(new bumpData((Vector2)(-normal)*2.0f, 25.0f, 0.5f));
+            sound?.playSound((Node)this);
         }
     }
 
